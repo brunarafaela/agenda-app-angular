@@ -1,0 +1,18 @@
+<main>
+  <section id="intro" class="wow visible fadeInUp">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <ul>
+            <li *ngFor="let event of events; let i = index">
+              {{ i }} {{ event.subject }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          aaaa
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
