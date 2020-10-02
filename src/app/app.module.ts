@@ -4,6 +4,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
 import { EventComponent } from "./components/event/event.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, EventComponent],
@@ -11,6 +14,9 @@ import { EventComponent } from "./components/event/event.component";
     BrowserModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

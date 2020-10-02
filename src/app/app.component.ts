@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
+import { ModalDirective } from "angular-bootstrap-md";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-root",
@@ -6,6 +8,36 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
+  @ViewChild(ModalDirective) modal: ModalDirective;
+  name: string = "";
+  timeInput = new FormControl();
+  subjectInput = new FormControl();
+  locationInput = new FormControl();
+  descriptionInput = new FormControl();
+
+  addNewEvent() {
+    const newEvent: any = {
+      time: this.timeInput.value,
+      subject: this.subjectInput.value,
+      location: this.locationInput.value,
+      description: this.descriptionInput.value,
+    };
+
+    this.events.push(newEvent);
+
+    this.timeInput.setValue("");
+    this.subjectInput.setValue("");
+    this.locationInput.setValue("");
+    this.descriptionInput.setValue("");
+
+    this.modal.hide();
+  }
+
+  deleteEvent(event: any) {
+    const itemIndex = this.events.findIndex((el) => el === event);
+    this.events.splice(itemIndex, 1);
+  }
+
   events: Array<any> = [
     {
       time: "08:00",
